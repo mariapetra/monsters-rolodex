@@ -1,5 +1,7 @@
 import React from 'react';
+//engine that does all the work
 import ReactDOM from 'react-dom/client';
+// specifies this should be web related 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
