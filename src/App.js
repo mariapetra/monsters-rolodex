@@ -7,7 +7,8 @@ class App extends Component {
     super(); //calls the underlying constructor method
 
     this.state = {
-      name: 'Yihua', //something react is looking for inside of your component
+      name: 'Yihua',
+      company: 'ZTM', //something react is looking for inside of your component
     };
   }
   render() {
@@ -15,7 +16,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>Hi {this.state.name}</p>
+          <p>Hi {this.state.name} and I work at {this.state.company} </p>
+          <button
+            onClick={() => {
+              this.setState({ name: 'Andrei' });
+              console.log(this.state.name)
+            }}
+          >
+            Change name
+          </button>
         </header>
       </div>
     );
