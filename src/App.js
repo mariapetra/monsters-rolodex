@@ -7,26 +7,21 @@ class App extends Component {
     super(); //calls the underlying constructor method
 
     this.state = {
-      monsters: [
-        {
-          name: 'Maria',
-          id: '876sugdfugsdf'
-        },
-        {
-          name: 'Laura',
-          id: '76khfgkudfhkgh'
-          //testing my new branch
-
-        },
-
-        {
-          name: 'Louise',
-          id: 'kjhkd6r98erihd98'
-
-        },
-      ]
-
+      monsters: [],
     };
+  }
+
+  //life cycle methods - re render component after getting the information
+  //get this info the moment it is rendered by react 
+  //componentDidMount component DidUpdate = most important - method you write code inside
+
+  //mount = first time it gets onto the dom / this only happens once
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      //promise something that is asynchoromous in JS - i promise eventually i will have a value
+      .then((response) => response.json())
+      .then((users) => console.log(users))
   }
 
   render() {
