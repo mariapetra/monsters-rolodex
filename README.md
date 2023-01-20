@@ -1,8 +1,40 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 Notes:
+
+asynchronous event handling:
+
+* promises - i promise this will give you a value
+* if we get a value and the promise resolves = .then
+* if we do not get a value then we add a .catch
+* e7 added a new function async await - gives us a new way to write our asynchronour code
+
+const myPromise = new Promise((resolve, reject) => { 
+
+if (false) {
+
+    setTimeout(()) => {
+
+    resolve('I have succeeded');
+
+}, 1000);
+
+} else {
+
+    reject('I have failed');
+
+});
+
+myPromise
+
+    .then(value => value + '!!!!!'); //this would be wrapped in a resolve promise (you can only call .then in a resolved promise - can do as many times as you want)
+
+    .then(newValue => console.log(newValue));
+
+    .catch(rejectValue => console.log(rejectValue));
+
+\= control over what we want to do with asynchronous events if they do what they need to do
+
 
 React = components and how and when they render and re-render
 
