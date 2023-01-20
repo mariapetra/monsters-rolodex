@@ -50,6 +50,15 @@ state == current state
 
 props deals with components
 
+render and re-render, what is the order? Classes:
+
+* constructor runs first - Always in any class = initialize the state (hey react theres going to be a state object for this component and this is the state values it should have)
+* then render your initial component = what the ui for this component is going to be
+* then component did mount = react is like ok ive run the constructor ive initialized the state and now I will render the initial ui - what it will mount on
+* then update component so it setStates
+* and then it will **re-render** again the moment the state changes (show the new info)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
