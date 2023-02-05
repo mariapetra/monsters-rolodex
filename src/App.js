@@ -8,6 +8,7 @@ class App extends Component {
 
     this.state = {
       monsters: [],
+      searchField: "",
     };
   }
 
@@ -28,22 +29,25 @@ class App extends Component {
           console.log(this.state)
         }
       )
+
       );
   }
+
   //Class is a protected keyword so we have to use className
   render() {
+    const filteredMonsters = this.state.monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    });
     return <div className="App">
       <input
         className='search-box'
         type='search'
         placeholder='search monsters'
         onChange={(event) => {
-          const searchString = event.target.value.toLocaleLowerCase();
-          const filteredMonsters = this.state.monsters.filter((monster) => {
-            return monster.name.toLocaleLowerCase().includes(searchString);
-          });
+          const searchField = event.target.value.toLocaleLowerCase();
+
           this.setState(() => {
-            return { monsters: filteredMonsters };
+            return { searchField };
           })
         }}
       //immutability - if you are going to modify an array - create a new array with that method - .map .filter .reduce
@@ -54,7 +58,7 @@ class App extends Component {
         //use map to iterate through the monsters
         //what is map? map is an array method 
         //use a function to itterate through your array and create a new array based on your existing arrays
-        this.state.monsters.map((monster) => {
+        filteredMonsters.map((monster) => {
           //most projects will have an id value - as this is unique / you will get an error that you should provide a unique key
           //this is what we are using in our key value
           //why - react and re rendering - the key value is used by react to make it more optimised to update and re render components on your page
