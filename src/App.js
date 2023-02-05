@@ -30,10 +30,27 @@ class App extends Component {
       )
       );
   }
-
+  //Class is a protected keyword so we have to use className
   render() {
     return <div className="App">
+      <input
+        className='search-box'
+        type='search'
+        placeholder='search monsters'
+        onChange={(event) => {
+          const searchString = event.target.value.toLocaleLowerCase();
+          const filteredMonsters = this.state.monsters.filter((monster) => {
+            return monster.name.toLocaleLowerCase().includes(searchString);
+          });
+          this.setState(() => {
+            return { monsters: filteredMonsters };
+          })
+        }}
+      //immutability - if you are going to modify an array - create a new array with that method - .map .filter .reduce
+      />
       {
+        // The things that look like HTML are components that JSX has written in
+        // Allowing us to bind functionality to the UI
         //use map to iterate through the monsters
         //what is map? map is an array method 
         //use a function to itterate through your array and create a new array based on your existing arrays
@@ -44,9 +61,8 @@ class App extends Component {
           //eg we have 4 h1s - react updates this directky
           //how are these h1s differentiate? - by using  the key value
           // react will use this to know who to update
-          return <div>
-
-            <h1 key={monster.id}>{monster.name}</h1>
+          return <div key={monster.id}>
+            <h1>{monster.name}</h1>
           </div>
         }
         )
